@@ -66,6 +66,7 @@ class EmpleadosController extends Controller
         if($request->hasFile('Foto')){
  
             // Guardar la ruta de img y pasarla a la carpeta uploads
+            //nos retorna la ruta y nombre del archivo
             $datosEmpleados['Foto']=$request->file('Foto')->store('uploads','public');
 
             // Guardar los datos en la Base de Datos
