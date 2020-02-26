@@ -9,6 +9,8 @@
         </div>
     @endif
 
+     
+
     <a href="{{ url('empleados/create') }}" class="btn btn-success mb-2">Agregar Empleado</a>
 
 

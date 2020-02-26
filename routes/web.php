@@ -19,7 +19,17 @@ Route::get('/', function () {
 
 // Route::get('empleados','EmpleadosController@index');
 // Route::resource('empleados','Ejemplo3Controller');
-Route::resource('empleados','EmpleadosController')->middleware('auth');
+Route::resource('empleados','EmpleadosController');
+
+// Route::resource('empleados','EmpleadosController')->middleware('auth');
+
+// NOTIFICACIONES
+Route::get('notificaciones','NotificationsController@index')->name('notifications.index');
+Route::put('notificaciones/{id}','NotificationsController@update')->name('notifications.update');
+Route::delete('notificaciones/{id}','NotificationsController@destroy')->name('notifications.destroy');
+
+
+
 
 // AUTENTICACION
 //desactivar el registro y el reseteo de la contraseña

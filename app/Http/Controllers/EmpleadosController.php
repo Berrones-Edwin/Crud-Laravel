@@ -153,9 +153,10 @@ class EmpleadosController extends Controller
 
             $empleado = Empleados::where('id',$id)
                                     ->get();
+            dd($empleado[0]->Foto);
             // ELIMINAR LA IMG ANTIGUA
             Storage::delete('public/'.$empleado[0]->Foto);
-
+            
             // CARGAR LA NUEVA RUTA DE LA IMG Y MOVER LA IMG A LA UPLOADS
             $datosEmpleados['Foto'] = $request->file('Foto')->store('uploads','public');
 

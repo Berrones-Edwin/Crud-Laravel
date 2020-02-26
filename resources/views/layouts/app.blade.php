@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -36,6 +37,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('empleados.index') }}">{{ __('Empleados') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('notifications.index') }}"  class="nav-link"> Notificaciones ( {{ count(auth()->user()->unreadNotifications)  }} ) </a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -51,6 +55,7 @@
                                 </li>
                             @endif
                         @else
+                            
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -67,7 +72,9 @@
                                         @csrf
                                     </form>
                                 </div>
+                               
                             </li>
+                           
                         @endguest
                     </ul>
                 </div>
@@ -78,5 +85,6 @@
             @yield('content')
         </main>
     </div>
+    <script src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>

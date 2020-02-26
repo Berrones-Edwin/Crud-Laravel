@@ -1,0 +1,26 @@
+/* Helpers */
+.d-inline{
+    display: inline;
+}
+
+/* Notifications */
+.notifications__container .notification{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.notification-not-read{
+    background-color:#b1fb98 ;
+}
+
+.show{
+    display: block;
+    transition: all .3s;
+}
+
+.hidde{
+    display: none;
+    transition: all .3s;
+}
