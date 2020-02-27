@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\InvoicePaid;
+use App\User;
 
 class NotificationsController extends Controller
 {
@@ -19,7 +22,11 @@ class NotificationsController extends Controller
         // auth()->user()->notifications->markAsRead marcar notificaciones como leida
 
         $notifications  = auth()->user()->notifications;
+        // $notifications  = auth()->user()->notifications;
+        // dd(auth()->user()->notifications);
         // dd($notifications);
+
+        // $notifications =[]; 
         return view('notifications.index',compact('notifications'));
     }
 
@@ -31,6 +38,8 @@ class NotificationsController extends Controller
     public function create()
     {
         //
+        $users= User::where('id','!=',auth()->user()->id)->get();
+        return view('notifications.create',compact('users'));
     }
 
     /**
@@ -42,6 +51,11 @@ class NotificationsController extends Controller
     public function store(Request $request)
     {
         //
+
+        $user = User::findOrFail($request->user_id);
+        Notification::send($user,new InvoicePaid($request->title,$request->description));
+        return redirect()->route('notifications.create');
+        // dd($user);
     }
 
     /**

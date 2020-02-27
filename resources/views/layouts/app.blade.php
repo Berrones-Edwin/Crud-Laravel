@@ -37,9 +37,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('empleados.index') }}">{{ __('Empleados') }}</a>
                         </li>
+                        @auth()
                         <li class="nav-item">
                             <a href="{{ route('notifications.index') }}"  class="nav-link"> Notificaciones ( {{ count(auth()->user()->unreadNotifications)  }} ) </a>
                         </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -85,6 +87,10 @@
             @yield('content')
         </main>
     </div>
-    <script src="{{ asset('js/script.js') }}"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+    @yield('scripts')
 </body>
 </html>

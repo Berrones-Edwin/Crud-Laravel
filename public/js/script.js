@@ -1,18 +1,33 @@
+//navbar
 const NotificationsNotRead = document.querySelector('#NotificationsNotRead');
-const NotificationsNotReadContainer = document.querySelector('#NotificationsNotReadContainer');
 const NotificationsRead = document.querySelector('#NotificationsRead');
+
+const NotificationsNotReadContainer = document.querySelector('#NotificationsNotReadContainer');
 const NotificationsReadContainer = document.querySelector('#NotificationsReadContainer');
 
-// NotificationsNotReadContainer.classList.add('hidde');
+console.log('click');
+
+
 NotificationsNotRead.classList.add('active');
 NotificationsReadContainer.classList.add('hidde');
 
-
-NotificationsNotRead.addEventListener('click',()=>{
+NotificationsRead.addEventListener("mouseover",function(){
+    console.log('click');
     
-    NotificationsNotReadContainer.classList.add('hidde');
-    NotificationsReadContainer.classList.add('show');
-
-    NotificationsNotRead.classList.add('active');
-    NotificationsRead.classList.remove('active')
 })
+// btn.addEventListener('click',(event)=>{
+//     console.log('click');
+    
+// })
+// NotificationsNotReadContainer.classList.add('hidde');
+// NotificationsReadContainer.classList.add('show');
+
+// NotificationsNotRead.classList.add('active');
+// NotificationsRead.classList.remove('active');
+
+
+
+//   $('#NotificationsNotRead').on('click',function(){
+//     console.log('click');
+    
+//   });

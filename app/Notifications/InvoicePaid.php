@@ -11,14 +11,19 @@ class InvoicePaid extends Notification
 {
     use Queueable;
 
+    protected $title;
+    protected $message;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($title,$message)
     {
         //
+        $this->title = $title;
+        $this->message = $message;
     }
 
     /**
@@ -53,9 +58,10 @@ class InvoicePaid extends Notification
      */
     public function toDatabase($notifiable)
     {
+        // dd($notifiable);
         return [
-            'title'    => 'Nueva Notificación',
-            'message'  => '¡Hola esta es una notificación de prueba'
+            'title'    => $this->title,
+            'message'  => $this->message
         ];
     }
 

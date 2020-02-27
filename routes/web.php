@@ -19,14 +19,16 @@ Route::get('/', function () {
 
 // Route::get('empleados','EmpleadosController@index');
 // Route::resource('empleados','Ejemplo3Controller');
-Route::resource('empleados','EmpleadosController');
+Route::resource('empleados','EmpleadosController')->middleware('auth');
 
 // Route::resource('empleados','EmpleadosController')->middleware('auth');
 
 // NOTIFICACIONES
-Route::get('notificaciones','NotificationsController@index')->name('notifications.index');
-Route::put('notificaciones/{id}','NotificationsController@update')->name('notifications.update');
-Route::delete('notificaciones/{id}','NotificationsController@destroy')->name('notifications.destroy');
+Route::get('notificaciones','NotificationsController@index')->name('notifications.index')->middleware('auth');
+Route::get('notificaciones/crear','NotificationsController@create')->name('notifications.create')->middleware('auth');
+Route::post('notificaciones','NotificationsController@store')->name('notifications.store')->middleware('auth');
+Route::put('notificaciones/{id}','NotificationsController@update')->name('notifications.update')->middleware('auth');
+Route::delete('notificaciones/{id}','NotificationsController@destroy')->name('notifications.destroy')->middleware('auth');
 
 
 
