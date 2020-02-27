@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('scripts')
-    <script src="{{ asset('js/script.js') }}"></script>
+    <script defer src="{{ asset('js/script.js') }}"></script>
 @endsection
 @section('content')
 
@@ -8,7 +8,7 @@
 <a href="{{ route('notifications.create') }}" class="btn btn-primary">Enviar Notificacion</a>
 
 <div class="container">
-    <nav class="nav nav-pills nav-fill">
+    <nav class="nav nav-pills nav-fill mb-3">
         <button class="nav-item nav-link" id="NotificationsNotRead">No leidos</button>
         <button class="nav-item nav-link" id="NotificationsRead">Leidos</button>
         <button class="nav-item nav-link" id="NotificationsFavorite">Favoritos</button>
@@ -17,6 +17,7 @@
     <div class="notifications-not-read__container" id="NotificationsNotReadContainer">
         <ul class="list-group notifications__container">
             @foreach($notifications as $notification)
+                @if( $notification->read_at == null)
                     <li class="list-group-item mb-3 notification {{ $notification->read_at == null ? 'notification-not-read' : '' }}  " >
                         <div>
         
@@ -33,13 +34,42 @@
                                 <button type="submit" class="btn btn-sm btn-info">*</button>
                             </form>
                             
+                            <!-- <form class="d-inline" action="{{ route('notifications.destroy',$notification->id) }}" method="post">
+                                @method('DELETE') @csrf()
+                                <button type="submit" class="btn btn-sm btn-danger">x</button>
+                            </form> -->
+                        </div>
+                    </li>
+                @endif 
+            @endforeach
+           
+        </ul>
+
+    </div>
+
+
+    <div class="notifications-not-read__container" id="NotificationsReadContainer">
+        <ul class="list-group notifications__container">
+            @foreach($notifications as $notification)
+                @if(! $notification->read_at == null)
+                    <li class="list-group-item mb-3 notification bg-warning  " >
+                        <div>
+        
+                            <p>
+                                <b>{{ $notification->data['title'] }}</b>
+                            </p>
+                            <small>{{ $notification->id }}</small> <br>
+                            <small>{{ $notification->data['message'] }}</small>
+                        </div>
+                        <div class="float-right ">
+                            
                             <form class="d-inline" action="{{ route('notifications.destroy',$notification->id) }}" method="post">
                                 @method('DELETE') @csrf()
                                 <button type="submit" class="btn btn-sm btn-danger">x</button>
                             </form>
                         </div>
                     </li>
-                    
+                @endif 
             @endforeach
            
         </ul>

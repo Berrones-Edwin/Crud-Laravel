@@ -7,27 +7,27 @@ const NotificationsReadContainer = document.querySelector('#NotificationsReadCon
 
 console.log('click');
 
-
 NotificationsNotRead.classList.add('active');
 NotificationsReadContainer.classList.add('hidde');
 
-NotificationsRead.addEventListener("mouseover",function(){
-    console.log('click');
+
+NotificationsRead.addEventListener("click", function () {
     
+    NotificationsNotRead.classList.remove('active');
+    NotificationsRead.classList.add('active');
+
+    NotificationsReadContainer.classList.remove('hidde');
+    NotificationsNotReadContainer.classList.add('hidde');
+
 })
-// btn.addEventListener('click',(event)=>{
-//     console.log('click');
+
+
+NotificationsNotRead.addEventListener("click", function () {
     
-// })
-// NotificationsNotReadContainer.classList.add('hidde');
-// NotificationsReadContainer.classList.add('show');
+    NotificationsNotRead.classList.add('active');
+    NotificationsRead.classList.remove('active');
 
-// NotificationsNotRead.classList.add('active');
-// NotificationsRead.classList.remove('active');
+    NotificationsReadContainer.classList.add('hidde');
+    NotificationsNotReadContainer.classList.remove('hidde');
 
-
-
-//   $('#NotificationsNotRead').on('click',function(){
-//     console.log('click');
-    
-//   });
+})

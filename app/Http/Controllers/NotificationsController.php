@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\InvoicePaid;
 use App\User;
+use App\Notification as NotificationModel;
 
 class NotificationsController extends Controller
 {
@@ -108,5 +109,8 @@ class NotificationsController extends Controller
     public function destroy($id)
     {
         //
+        NotificationModel::destroy($id);
+        return redirect()->route('notifications.index');
+
     }
 }
